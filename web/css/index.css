@@ -13,6 +13,7 @@ body{
 }
 .container{
     width: 100%;
+    background-color: rgba(143, 140, 140, .04);
 }
 
 .container-head{
@@ -59,10 +60,16 @@ body{
     width: 100%;
 }
 
+main{
+    height: calc(100vh - 55px);
+}
+
 .container-main{
     width: 90%;
+    height: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 0 auto;
     gap: 40px;
 }
@@ -80,7 +87,7 @@ body{
 .table{
     width: 70%;
     padding: 1.2rem;
-    box-shadow: 0 .15rem 1.75rem rgb(33,40,50,.15);
+    box-shadow: 0 .15rem 1.75rem rgba(33,40,50,.15);
 }
 
 .search{
@@ -115,5 +122,5 @@ body{
 }
 
 .wrap-item:nth-child(odd){
-    background-color: rgb(143, 140, 140, .04);
+    background-color: rgba(143, 140, 140, .04);
 }
