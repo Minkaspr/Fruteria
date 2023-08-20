@@ -52,26 +52,52 @@ public class FrutaDAOImpl implements FrutaDAO {
     }
 
     @Override
-    public String actualizarFruta(int idFruta, FrutaDTO nuevosDatos) {
+    public String actualizarFruta(FrutaDTO fruta) {
+        // Busca la fruta en el array `frutas`.
         for (FrutaDTO frutaExistente : frutas) {
-            if (frutaExistente.getIdFruta() == idFruta) {
-                // Se encontró la fruta a actualizar, actualizamos los datos
-                frutaExistente.setNombre(nuevosDatos.getNombre());
-                frutaExistente.setDescripcion(nuevosDatos.getDescripcion());
-                frutaExistente.setCantidadKilogramos(nuevosDatos.getCantidadKilogramos());
-                frutaExistente.setPrecioPorKilogramo(nuevosDatos.getPrecioPorKilogramo());
-                frutaExistente.setTipo(nuevosDatos.getTipo());
+            if (frutaExistente.getIdFruta() == fruta.getIdFruta()) {
+                // Se encontró la fruta a actualizar, actualizamos los datos.
+                frutaExistente.setNombre(fruta.getNombre());
+                frutaExistente.setDescripcion(fruta.getDescripcion());
+                frutaExistente.setCantidadKilogramos(fruta.getCantidadKilogramos());
+                frutaExistente.setPrecioPorKilogramo(fruta.getPrecioPorKilogramo());
+                frutaExistente.setTipo(fruta.getTipo());
                 return "Fruta actualizada exitosamente.";
             }
         }
 
         // Si no se encontró la fruta con el idFruta proporcionado
-        return "No se encontró la fruta con ID " + idFruta;
+        return "No se encontró la fruta con ID " + fruta.getIdFruta();
     }
 
     @Override
-    public String eliminarFruta(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String eliminarFruta(List<Integer> ids) {
+        // Verifica que la lista de IDs no esté vacía.
+        if (ids.isEmpty()) {
+            return "No se ha especificado ninguna ID de fruta para eliminar.";
+        }
+
+        // Recorre la lista de IDs y elimina las frutas correspondientes del array.
+        for (int id : ids) {
+            int index = -1;
+            for (int i = 0; i < frutas.size(); i++) {
+                if (frutas.get(i).getIdFruta() == id) {
+                    index = i;
+                    break;
+                }
+            }
+
+            // Si no se encontró la fruta con el ID especificado, se genera un mensaje de error.
+            if (index == -1) {
+                return "No se encontró la fruta con ID " + id;
+            }
+
+            // Elimina la fruta del array.
+            frutas.remove(index);
+        }
+
+        // Devuelve un mensaje de éxito.
+        return "Se eliminaron las frutas con IDs " + ids;
     }
 
     @Override

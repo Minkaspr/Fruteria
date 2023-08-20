@@ -12,7 +12,7 @@ public interface FrutaDAO {
     List<FrutaDTO> obtenerTodasLasFrutas();
     FrutaDTO obtenerFrutaPorId(int id);
     String agregarFruta(FrutaDTO fruta);
-    String actualizarFruta(int id, FrutaDTO fruta);
-    String eliminarFruta(int id);
+    String actualizarFruta(FrutaDTO fruta);
+    String eliminarFruta(List <Integer> ids);
     List<String> obtenerTiposDeFruta();
 }

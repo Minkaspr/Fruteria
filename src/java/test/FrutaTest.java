@@ -10,7 +10,6 @@ import java.util.List;
  *
  * @author MinKaspr
  *
- * Tipos de Frutas: ácidas, semiácidas, neutras y dulces.
  */
 public class FrutaTest {
 
@@ -20,9 +19,16 @@ public class FrutaTest {
 
         // Ejecutar los métodos de prueba
         probarAgregar(frutaDAO);
+        System.out.println("---------------");
         probarObtenerTodasLasFrutas(frutaDAO);
+        System.out.println("---------------");
         probarObtenerFrutaPorId(frutaDAO);
+        System.out.println("---------------");
         probarActualizarFruta(frutaDAO);
+        System.out.println("---------------");
+        probarEliminarFruta(frutaDAO);
+        System.out.println("------Verificar---------");
+        probarObtenerTodasLasFrutas(frutaDAO);
     }
 
     private static void probarAgregar(FrutaDAO frutaDAO) {
@@ -95,18 +101,30 @@ public class FrutaTest {
         // Crear un objeto FrutaDTO con los nuevos datos para actualizar
         FrutaDTO nuevosDatos = new FrutaDTO();
         nuevosDatos.setNombre("Manzana Granny Smith");
-        nuevosDatos.setDescripcion("Deliciosa fruta verde");
+        nuevosDatos.setDescripcion("Deliciosa fruta verde EDITADO");
         nuevosDatos.setCantidadKilogramos(40.0);
         nuevosDatos.setPrecioPorKilogramo(3.0);
         nuevosDatos.setTipo("Ácidas");
+        nuevosDatos.setIdFruta(idFrutaExistente);
 
         // Llamar al método actualizarFruta del DAO
-        String mensaje = frutaDAO.actualizarFruta(idFrutaExistente, nuevosDatos);
+        String mensaje = frutaDAO.actualizarFruta(nuevosDatos);
 
         // Imprimir el mensaje de resultado
         System.out.println(mensaje);
 
         // Mostrar todas las frutas después de la actualización
         probarObtenerTodasLasFrutas(frutaDAO);
+    }
+
+    private static void probarEliminarFruta(FrutaDAO frutaDAO) {
+        // Crear una lista de IDs de frutas para eliminar.
+        List<Integer> ids = new ArrayList<Integer>();
+        ids.add(1);
+        // ids.add(5); --> No se encontró la fruta con ID 5
+
+        // Llamar al método eliminarFruta() y verificar el resultado.
+        String mensaje = frutaDAO.eliminarFruta(ids);
+        System.out.println(mensaje); // --> Se eliminaron las frutas con IDs [1]
     }
 }

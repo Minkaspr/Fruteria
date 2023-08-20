@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 *{
-    font-family: 'Roboto', sans-serif;
-    display: block;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body{
+    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     background-color:#fff;
 }
+
 .container{
     width: 100%;
     background-color: rgba(143, 140, 140, .04);
@@ -28,12 +29,13 @@ body{
 
 .container-head a{
     text-decoration: none;
-    color: black;
+    color:rgba(0, 0, 0, 0.5);
 }
 
-.logo{
+.container-head .logo{
     font-size: 32px;
     font-weight: 700;
+    color:  rgb(2, 182, 26);
 }
 .navbar{
     display: flex;
@@ -42,7 +44,7 @@ body{
 .navbar a{
     position: relative;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .navbar a::before{
@@ -52,32 +54,45 @@ body{
     left: 0;
     width: 0;
     height: 2px;
-    background-color: black;
+    background-color: rgb(2, 182, 26);
     transition: .3s width;
+}
+
+.navbar a:hover{
+    color: black;
 }
 
 .navbar a:hover::before{
     width: 100%;
 }
 
+
 main{
     height: calc(100vh - 55px);
 }
 
 .container-main{
-    width: 90%;
+    width: 82%;
     height: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /*align-items: center;*/
     margin: 0 auto;
     gap: 40px;
 }
 
 .information{
     width: 30%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.slogan{
+    font-size: 64px;
+    width: 100%;
+    color: rgb(212, 109, 40);
 }
 
 .imgPortada{
@@ -86,8 +101,11 @@ main{
 
 .table{
     width: 70%;
+    height: fit-content;
+    margin-top: 128px;
     padding: 1.2rem;
-    box-shadow: 0 .15rem 1.75rem rgba(33,40,50,.15);
+    box-shadow: 0 .15rem 1.75rem rgba(33,40,50,.18);
+    border-radius: 16px;
 }
 
 .search{
@@ -105,14 +123,64 @@ main{
     font-size: 14px;
 }
 
+.wrap-option{
+    display: flex;
+    gap: 16px;
+    height: 30px;
+    align-items: center;
+}
+
+.wrap-option .add,
+.wrap-option .delete{
+    display: block;
+    width: auto;
+}
+
+.add, .delete{
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: .3s background-color, .3s color;
+}
+
+.add a,
+.delete a{
+    text-decoration: none;
+    font-weight: 400;
+    color: #000;
+}
+
+.add:hover{
+    background-color: rgba(2, 182, 26, 0.8);
+    color: white;
+}
+
+.add:hover a{
+    color: inherit;
+}
+
+.delete:hover{
+    background-color: rgba(211, 2, 2, 0.8);
+    color: white;
+}
+
+.delete:hover a{
+    color: inherit;
+}
+
+
 .wrap-title,
 .wrap-item{
     display: grid;
-    grid-template-columns: 10fr repeat(5,25fr);
+    grid-template-columns: repeat(2,6fr) repeat(5,25fr);
     align-items: center;
     text-align: center;
     padding: 10px 0;
 }
+
+.operation {
+    grid-column: span 2;
+    justify-self: center;
+  }
 
 .wrap-title{
     border-bottom: 1px solid #000;
@@ -124,3 +192,57 @@ main{
 .wrap-item:nth-child(odd){
     background-color: rgba(143, 140, 140, .04);
 }
+
+.edit,
+.remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-content,
+.remove-content {
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  transition: .2s outline, .2s color;
+}
+
+
+.edit-content a,
+.remove-content a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #000;
+}
+
+.edit-content i,
+.remove-content i {
+  font-size: 18px;
+}
+
+.edit-content:hover,
+.remove-content:hover {
+  outline-color: #9e8702cc;
+  outline-width: 2px;
+  outline-style: solid;
+  color: #9e8702cc;
+}
+
+.remove-content:hover {
+    outline-color: rgba(211, 2, 2, 0.8);
+    outline-width: 2px;
+    outline-style: solid;
+    color: rgba(211, 2, 2, 0.8);
+}
+
+.edit-content:hover a,
+.remove-content:hover a{
+  color: inherit;
+}
+
+
+
+
